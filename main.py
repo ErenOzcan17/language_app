@@ -27,7 +27,7 @@ def giris():
 def dil_secimi():
     ana_menu = MenuUi(["INGILIZCE",
                        "ALMANCA",
-                       "RUSÇA",
+                       "FRANSIZCA",
                        "çıkış yap",
                        ])
     ana_menu.show_menu()
@@ -39,8 +39,8 @@ def dil_secimi():
         print("Almanca seçildi")
         return Language().set_language("Almanca")
     elif y == 3:
-        print("Rusça seçildi")
-        return Language().set_language("Rusça")
+        print("Fransızca seçildi")
+        return Language().set_language("Fransızca")
     elif y == 4:
         print("Çıkış yapılıyor...")
         return False

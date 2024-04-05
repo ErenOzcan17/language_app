@@ -4,10 +4,12 @@ import sqlite3
 baglanilan_database = sqlite3.connect("database.sqlite")
 cursor = baglanilan_database.cursor()
 
-with open('eng-tr_datasest.csv', 'r', newline='') as csv_file:
-    files = csv.reader(csv_file)
-    for file in files:
-        cursor.execute("INSERT INTO english_language (word, meaning) VALUES (?, ?,)", (file[0], file[1]))
+with open('en-fr.csv', 'r', newline='') as csv_file:
+    print("CSV dosyası okunuyor...")
+    file = csv.reader(csv_file)
+    for index, satir in enumerate(file, start=1):
+        print(f'{index}. satır ekleniyor')
+        cursor.execute("INSERT INTO french_language (word, meaning) VALUES (?, ?)", (satir[0], satir[1]))
 
 baglanilan_database.commit()
 baglanilan_database.close()

@@ -8,7 +8,7 @@ cursor = baglanilan_database.cursor()
 class Language:
     def __init__(self):
         self.LANGUAGES_DICT = {"İngilizce": "english_language", "Almanca": "german_language",
-                               "Rusça": "russian_language"}
+                               "Fransızca": "french_language"}
         self.LANGUAGE = ""
         self.TABLE_NAME = ""
 
@@ -51,11 +51,12 @@ class Language:
                 question = cursor.fetchone()
                 cursor.execute(f"SELECT * FROM {self.TABLE_NAME} ORDER BY RANDOM() LIMIT 4")
                 choise = cursor.fetchall()
+                choise.append(question)
                 question_object = QuestionUi(question, choise)
-                question_object.show_question()
+                correct_answer = question_object.show_question()
                 answer = int(input("Lütfen cevabınızı giriniz [1-4]: "))
                 assert 1 <= answer <= 4, "Lütfen [1-4] aralığında bir değer giriniz"
-                if answer == 4:
+                if answer == correct_answer:
                     print("Doğru bildiniz")
                 else:
                     print("Yanlış cevap")
